@@ -1,24 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import UserPage from './container/UserPage';
+import {BrowserRouter as Switch, Route, Redirect, BrowserRouter} from "react-router-dom";
+
 
 function App() {
+  const username = prompt("Enter a Github Username");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Switch>
+      <Route path="/:userName" component={UserPage}/>
+      <Redirect to={`/${username}`} />
+    </Switch>
+    </BrowserRouter>  
   );
 }
 
